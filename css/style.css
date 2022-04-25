@@ -19,12 +19,31 @@ header {
     align-items: center;
 }
 
+div.writer {
+    position: relative;
+}
+
+div.writer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: .25rem;
+    height: 35%;
+    margin: 2rem 0;
+    animation: blinkCursor 1s steps(3) infinite;
+    background-color: #ffffff;
+    box-shadow:  .5rem .5rem .5rem rgba(100,100,100,.75);
+}
+
 header h1 {
     color: #ffffff;
     font-size: 3rem;
+    letter-spacing: 5px;
     text-shadow: .5rem .5rem .5rem rgba(100,100,100,.75);
     margin: 1rem;
-    animation: typing 10s steeps(14) infinite;
+    white-space: nowrap;
+    animation: typing 10s steps(18) infinite;
     overflow: hidden;
 }
 
@@ -41,6 +60,18 @@ header img {
     }
     30%,60%
     {
-        width: 290px;
+        width: 453.6px;
     }
+}
+
+@keyframes blinkCursor {
+    0%, 75%
+    {
+        opacity: 1;
+    }
+    76%, 100%
+    {
+        opacity: 0;
+    }
+    
 }
