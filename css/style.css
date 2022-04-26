@@ -5,18 +5,30 @@
 }
 
 html, body {
-    min-width: 100%;
-    min-height: 100%;
+    height: 100vh;
     font-family: "VT323", sans-serif;
 }
 
 body {
     background-image: linear-gradient(to right bottom, #de4889, #c92b90, #ad0e99, #8700a4, #4e10ae);
+    display: flex;
+    flex-direction: column;
 }
 
 header {
+    position: fixed;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    flex-direction: column;
+    left: 0;
+    top: 0;
+}
+
+@media screen and (min-width: 500px) {
+    header {
+        flex-direction: row;
+        align-items: center;
+    }
 }
 
 div.writer {
@@ -30,7 +42,7 @@ div.writer::before {
     right: 0;
     width: .25rem;
     height: 35%;
-    margin: 2rem 0;
+    margin: 1.5rem 0;
     animation: blinkCursor 1s steps(3) infinite;
     background-color: #ffffff;
     box-shadow:  .5rem .5rem .5rem rgba(100,100,100,.75);
@@ -38,7 +50,7 @@ div.writer::before {
 
 header h1 {
     color: #ffffff;
-    font-size: 3rem;
+    font-size: 2rem;
     letter-spacing: 5px;
     text-shadow: .5rem .5rem .5rem rgba(100,100,100,.75);
     margin: 1rem;
@@ -60,7 +72,7 @@ header img {
     }
     30%,60%
     {
-        width: 453.6px;
+        width: 332.1px;
     }
 }
 
@@ -74,4 +86,81 @@ header img {
         opacity: 0;
     }
     
+}
+
+main {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 300px;
+}
+
+.menu li {
+    position: absolute;
+    left: 0;
+    list-style: none;
+    transform-origin: 150px;
+    transition: .5s;
+    transition-delay: calc(0.1s * var(--i));
+    transform: rotate(0deg) translateX(150px);
+}
+
+.menu.active li {
+    transform: rotate(calc(360deg / 8 * var(--i)));
+}
+
+.menu li span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    color: #111111;
+    font-size: 1.5rem;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, .25);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    transform: rotate(calc(360deg / -8 * var(--i)));
+    transition: .5s;
+}
+
+.menu li span:hover {
+    color: #c92b90;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, .5);
+}
+
+.toggle {
+    width: 6.5rem;
+    height: 6.5rem;
+    background-color: #ffffff;
+    border-radius: 50%;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, .25);
+    font-size: 3rem;
+    transition: 1s;
+}
+
+.toggle:hover {
+    box-shadow: 0 3px 4px rgba(0, 0, 0, .5);
+}
+
+.menu.active .toggle {
+    transform: rotate(315deg);
+}
+
+ion-icon {
+    pointer-events: none;
 }
